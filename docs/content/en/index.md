@@ -4,6 +4,19 @@ seo:
   description: 'Welcome to the QSOS documentation'
 ---
 
+<!--
+  Copyright (c) 2026 Contributors to the Eclipse Foundation
+
+  See the NOTICE file(s) distributed with this work for additional
+  information regarding copyright ownership.
+
+  This program and the accompanying materials are made available under the
+  terms of the Creative Commons Attribution-ShareAlike 4.0 International
+  License which is available at https://creativecommons.org/licenses/by-sa/4.0/
+
+  SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+
 ::u-page-hero
 #title
 QSOS Documentation
