@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ main, develop, ci/improve-workflows ]
+    branches: [ main, ci/improve-workflows ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main ]
 
 jobs:
   lint:
