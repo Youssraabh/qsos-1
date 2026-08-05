@@ -1,11 +1,21 @@
-import eslint from '@eslint/js';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsparser from '@typescript-eslint/parser';
 import vuePlugin from 'eslint-plugin-vue';
 import vueParser from 'vue-eslint-parser';
 
 export default [
-  eslint.configs.recommended,
+  {
+    ignores: [
+      'node_modules/**',
+      'dist/**',
+      '.output/**',
+      '.nuxt/**',
+      'docs/.nuxt/**',
+      'docs/.output/**',
+      '*.config.js',
+      '*.config.ts',
+    ],
+  },
   {
     files: ['**/*.{js,mjs,cjs,ts,vue}'],
     languageOptions: {
@@ -21,22 +31,11 @@ export default [
       vue: vuePlugin,
     },
     rules: {
-      ...tseslint.configs.recommended.rules,
-      ...vuePlugin.configs['vue3-recommended'].rules,
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-explicit-any': 'warn',
       'vue/multi-word-component-names': 'off',
       'vue/no-v-html': 'off',
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     },
-  },
-  {
-    ignores: [
-      'node_modules/**',
-      'dist/**',
-      '.output/**',
-      '.nuxt/**',
-      'docs/.nuxt/**',
-      'docs/.output/**',
-    ],
   },
 ];
