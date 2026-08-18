@@ -34,6 +34,11 @@
           </NuxtLink>
         </li>
         <li>
+          <NuxtLink :to="userUid ? `/users/${userUid}/requirements-presets?intent=manage` : '/auth/'">
+            <Icon name="uil:list-ul" /> {{ $t('header.requirements_presets') }}
+          </NuxtLink>
+        </li>
+        <li>
           <NuxtLink to="/import-legacy">
             <Icon name="uil:import" /> {{ $t('header.import_legacy') }}
           </NuxtLink>
@@ -58,7 +63,10 @@
 
 <script setup>
 import LanguageSwitcher from './LanguageSwitcher.vue';
+import { getEmailUser } from '~/services/user';
+
 const { loggedIn, user } = useUserSession();
+const userUid = computed(() => (user.value ? getEmailUser(user.value) : null));
 </script>
 
 <style scoped>

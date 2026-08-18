@@ -23,6 +23,7 @@
         "types_of_software": "Types of software",
         "evaluate_software": "Evaluate a software",
         "compare_softwares": "Compare softwares",
+        "requirements_presets": "Requirements presets",
         "import_legacy": "Import legacy",
         "login": "Login"
     },
