@@ -214,7 +214,11 @@
         "osi_approved": "Approuvé par l'OSI ?",
         "see_also": "Voir aussi",
         "yes": "✅ Oui",
-        "no": "❌ Non"
+        "no": "❌ Non",
+        "search_label": "Rechercher",
+        "search_placeholder": "Filtrer par nom ou identifiant SPDX",
+        "search_clear": "Effacer",
+        "no_results": "Aucune licence ne correspond à « {query} »."
     },
     "about": {
         "back": "Retour",

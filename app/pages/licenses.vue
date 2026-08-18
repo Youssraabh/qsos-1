@@ -20,7 +20,16 @@
         <h1 class="ribbon-define">{{ $t('licenses.title') }}</h1>
         <p v-if="loading">{{ $t('licenses.loading') }}</p>
         <p v-else-if="licenses.length === 0">{{ $t('licenses.no_data') }}</p>
-        <table v-else>
+        <template v-else>
+            <div class="search">
+                <label for="license-search">{{ $t('licenses.search_label') }}</label>
+                <input id="license-search" v-model="search" type="search" :placeholder="$t('licenses.search_placeholder')">
+                <button v-if="search" type="button" class="button" @click="search = ''">
+                    {{ $t('licenses.search_clear') }}
+                </button>
+            </div>
+            <p v-if="filteredLicenses.length === 0">{{ $t('licenses.no_results', { query: search }) }}</p>
+            <table v-else>
             <thead>
                 <tr>
                     <th>{{ $t('licenses.ref') }}</th>
@@ -31,7 +40,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="license in licenses" :key="license.licenseId">
+                <tr v-for="license in filteredLicenses" :key="license.licenseId">
                     <td><a :href="license.reference" target="_blank">{{ license.referenceNumber }}</a></td>
                     <td>{{ license.licenseId }}</td>
                     <td>{{ license.name }}</td>
@@ -39,15 +48,25 @@
                     <td><a v-for="link in license.seeAlso" target="_blank" :key="link" :href="link">{{ link }}</a></td>
                 </tr>
             </tbody>
-        </table>
+            </table>
+        </template>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import type { LicenseInfo, LicenseExceptionInfo } from '~~/types/license'
 const licenses = ref<LicenseInfo[]>([])
 const loading = ref(true)
+const search = ref('')
+
+const filteredLicenses = computed(() => {
+    const query = search.value.trim().toLowerCase()
+    if (!query) return licenses.value
+    return licenses.value.filter(license =>
+        license.name.toLowerCase().includes(query)
+        || license.licenseId.toLowerCase().includes(query))
+})
 
 onMounted(async () => {
     loading.value = true
@@ -63,6 +82,20 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.search input {
+    flex: 1;
+    min-width: 12rem;
+    padding: 0.4rem 0.6rem;
+}
+
 table td:last-child a {
     display: block;
     font-size: small;
