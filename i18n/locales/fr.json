@@ -23,6 +23,7 @@
         "types_of_software": "Types de logiciels",
         "evaluate_software": "Évaluer un logiciel",
         "compare_softwares": "Comparer des logiciels",
+        "requirements_presets": "Préréglages d'exigences",
         "import_legacy": "Importer XML",
         "login": "Connexion"
     },
