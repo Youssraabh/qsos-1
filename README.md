@@ -98,6 +98,83 @@ bun run preview
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
+## Code Quality
+
+This project uses ESLint and Prettier to ensure code quality and consistent formatting.
+
+### Linting
+
+Check your code for linting errors:
+
+```bash
+# npm
+npm run lint
+
+# pnpm
+pnpm run lint
+
+# bun
+bun run lint
+```
+
+Automatically fix linting errors:
+
+```bash
+# npm
+npm run lint:fix
+
+# pnpm
+pnpm run lint:fix
+
+# bun
+bun run lint:fix
+```
+
+### Formatting
+
+Format your code with Prettier:
+
+```bash
+# npm
+npm run format
+
+# pnpm
+pnpm run format
+
+# bun
+bun run format
+```
+
+Check code formatting without modifying files:
+
+```bash
+# npm
+npm run format:check
+
+# pnpm
+pnpm run format:check
+
+# bun
+bun run format:check
+```
+
+### Type Checking
+
+Run TypeScript type checking:
+
+```bash
+# npm
+npm run typecheck
+
+# pnpm
+pnpm run typecheck
+
+# bun
+bun run typecheck
+```
+
+**Note:** All these checks run automatically in CI/CD pipeline. Make sure your code passes linting, formatting, and type checks before submitting a pull request.
+
 
 ## Roles.json 
 - the data/roles.json file which lists the administrators' email addresses

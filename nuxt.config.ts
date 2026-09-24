@@ -12,32 +12,9 @@
  ********************************************************************************/
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+
+  modules: ['@nuxt/test-utils/module', 'nuxt-auth-utils', '@nuxt/icon', '@nuxtjs/i18n', '@nuxt/eslint'],
   devtools: { enabled: true },
-  modules: ['@nuxt/test-utils/module', 'nuxt-auth-utils', '@nuxt/icon', '@nuxtjs/i18n'],
-  i18n: {
-    defaultLocale: 'en',
-    strategy: 'no_prefix',
-    locales: [
-      { code: 'en', name: 'English', file: 'en.json' },
-      { code: 'fr', name: 'French', file: 'fr.json' }
-    ],
-    langDir: 'locales/',
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root',
-      alwaysRedirect: false
-    }
-  },
-  css: [
-    '@/assets/styles/main.css'
-  ],
-  postcss: {
-    plugins: {
-      'postcss-lighten-darken': {}
-    }
-  },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
@@ -52,6 +29,9 @@ export default defineNuxtConfig({
       ]
     }
   },
+  css: [
+    '@/assets/styles/main.css'
+  ],
   runtimeConfig: {
     public: {
       github: {
@@ -66,7 +46,7 @@ export default defineNuxtConfig({
     },
     sessionPassword: process.env.NUXT_SESSION_PASSWORD,
     authApiBaseUrl: process.env.AUTH_API_BASE_URL
-  },
+  },  compatibilityDate: '2024-04-03',
   nitro: {
     devProxy: {
       '/docs': {
@@ -86,5 +66,25 @@ export default defineNuxtConfig({
   },
   typescript: {
     typeCheck: true
-  }
+  },
+  postcss: {
+    plugins: {
+      'postcss-lighten-darken': {}
+    }
+  },
+  i18n: {
+    defaultLocale: 'en',
+    strategy: 'no_prefix',
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'fr', name: 'French', file: 'fr.json' }
+    ],
+    langDir: 'locales/',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+      alwaysRedirect: false
+    }
+  },
 })
